@@ -17,6 +17,8 @@ require 'logger'
 
 require 'sinatra'
 require 'shotgun'
+require 'sidekiq'
+require 'redis'
 
 require 'erb'
 
@@ -34,6 +36,11 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
+
+
+twitter_config = YAML.load(File.read(APP_ROOT.join("config", "app.yml")))
+twitter_config.each {|k, v| ENV[k] = v}
+
 
 Twitter.configure do |config|
   config.consumer_key = ENV['TWITTER_KEY']

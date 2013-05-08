@@ -20,3 +20,7 @@ def request_token
   end
   session[:request_token]
 end
+
+def twitter_client
+  
+end
