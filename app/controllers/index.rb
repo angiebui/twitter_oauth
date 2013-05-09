@@ -38,8 +38,5 @@ get '/status/:job_id' do
   else 
     return "Posted!"
   end
-  # h = {status: status}
-  # p "this is the status hash/object"
-  # p h
 end
 
